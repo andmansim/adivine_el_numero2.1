@@ -20,6 +20,15 @@ def pedir_numero(value_min, value_max, attempts):
             print("Choose another number between " + str(value_min) + " and " + str(value_max))
         else:
             if valor_usuario > number:
+                print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(valor_usuario))
+            else:
+                print("Too far from the number, it's smaller. The number is between:" + str(valor_usuario) + " and " + str(value_max))
+        rest_attempts = rest_attempts - 1
+        valor_usuario = int(input())
+    if valor_usuario == number:
+        print("¡Congratulations!, you have completed the level")
+    if rest_attempts == 0 and valor_usuario != number:
+        print("Game over")
                 
     
 
