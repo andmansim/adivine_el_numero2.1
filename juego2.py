@@ -29,6 +29,19 @@ def pedir_numero(value_min, value_max, attempts):
         print("¡Congratulations!, you have completed the level")
     if rest_attempts == 0 and valor_usuario != number:
         print("Game over")
+
+def jugar():
+    user_choice = game_level()
+    if user_choice == 0:
+        pedir_numero(0,100,5)
+    elif user_choice == 1:
+        pedir_numero(0,1000,20)
+    elif user_choice == 2:
+        pedir_numero(0,1000000,50)
+    elif user_choice == 3:
+        pedir_numero(0,1000000000000,100)
+
+jugar()
                 
     
 
