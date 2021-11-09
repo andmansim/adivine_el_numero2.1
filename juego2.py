@@ -8,4 +8,18 @@ def game_level():
     user = int(input("Choose one level for the game: "))
     return user
 
+def pedir_numero(value_min, value_max, attempts):
+    import random
+    number = random.randint(value_min, value_max)
+    print(number)
+    print("Choose an integrer between:" + str(value_min) + " and " + str(value_max))
+    valor_usuario = int(input())
+    rest_attempts = attempts - 1
+    while valor_usuario != number and rest_attempts > 0:
+        if valor_usuario > value_max:
+            print("Choose another number between " + str(value_min) + " and " + str(value_max))
+        else:
+            if valor_usuario > number:
+                
+    
 
