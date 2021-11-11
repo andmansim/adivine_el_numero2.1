@@ -1,5 +1,4 @@
-
-i = 1
+i = 0
 j = 2
 result = []
 for n in range(i):
@@ -13,7 +12,8 @@ def game_level():
     nivel_medio = 1
     nivel_avanzado = 2
     nivel_experto = 3
-    levels = ["Game levels:" + "nivel_sencillo: " + str(nivel_sencillo), "nivel_medio: " + str(nivel_medio), "nivel_avanzado: " + str(nivel_avanzado), "nivel_experto: " + str(nivel_experto)]
+    nivel_IA = 4
+    levels = ["Game levels:" + "nivel_sencillo: " + str(nivel_sencillo), "nivel_medio: " + str(nivel_medio), "nivel_avanzado: " + str(nivel_avanzado), "nivel_experto: " + str(nivel_experto), "maestro IA: " + str(nivel_IA)]
     print(levels)
     user = int(input("Choose one level for the game: "))
     return user
@@ -39,15 +39,12 @@ def pedir_numero(value_min, value_max, attempts):
         print("¡Congratulations!, you have completed the level")
         print(("Put your name: "))
         name = str(input())
-        #b = [name] * [0]
-        #result.append(b)
-       
+        
         index=-1 
         for m in range (len(result)):
             if result[m][0]== name:
                 index=m
                         
-        print(index)
         if index == -1:
             a = [0]*2
             
@@ -67,25 +64,50 @@ def pedir_numero(value_min, value_max, attempts):
 
 def jugar():
     user_choice = game_level()
-    continue_playing = True 
-    while continue_playing == True:
+    if user_choice ==4:
+        jugar_IA()
+    else:
+        continue_playing = True 
+        while continue_playing == True:
         
-        if user_choice == 0:
-            pedir_numero(0,100,5)
-        elif user_choice == 1:
-            pedir_numero(0,1000,20)
-        elif user_choice == 2:
-            pedir_numero(0,1000000,50)
-        elif user_choice == 3:
-            pedir_numero(0,1000000000000,100)
-        print("Do you want to continue playing? Yes/No")
-        new_intent = str(input())
+            if user_choice == 0:
+                pedir_numero(0,100,5)
+            elif user_choice == 1:
+                pedir_numero(0,1000,20)
+            elif user_choice == 2:
+                pedir_numero(0,1000000,50)
+            elif user_choice == 3:
+                pedir_numero(0,1000000000000,100)
+       
+            print("Do you want to continue playing? Yes/No")
+            new_intent = str(input())
         
-        if new_intent != str('Yes'):
-            continue_playing = False
-                
+            if new_intent != str('Yes'):
+                continue_playing = False
+       
+def jugar_IA():
+    import random
+    number = random.randint(0, 100)
+    print("Computer number: " + str(number))
+    valor_usuario = int(random.randint(0, 100))
+    print("IA number: " + str(valor_usuario))
+    while valor_usuario != number:
+        if valor_usuario > number:
+            print("Too far from the number, it's smaller. The number is between:" + str(0) + " and " + str(valor_usuario))
+            valor_usuario = random.randint(0, valor_usuario)
+            print("IA number: " + str(valor_usuario))
+        else:
+            print("Too far from the number, it's smaller. The number is between:" + str(valor_usuario) + " and " + str(100))
+            valor_usuario = random.randint(valor_usuario, 100)
+            print("IA number: " + str(valor_usuario))
+    if valor_usuario == number:
+        print("¡Congratulations!, you have completed the level")             
+    
+   
+      
 jugar()
 print(result)
                 
+
     
 
