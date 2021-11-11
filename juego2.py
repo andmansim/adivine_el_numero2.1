@@ -32,7 +32,7 @@ def pedir_numero(value_min, value_max, attempts):
             if valor_usuario > number:
                 print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(valor_usuario))
             else:
-                print("Too far from the number, it's smaller. The number is between:" + str(valor_usuario) + " and " + str(value_max))
+                print("Too far from the number, it's bigger. The number is between:" + str(valor_usuario) + " and " + str(value_max))
         rest_attempts = rest_attempts - 1
         valor_usuario = int(input())
     if valor_usuario == number:
@@ -87,27 +87,27 @@ def jugar():
        
 def jugar_IA():
     import random
+    valor_inferior =0
+    valor_superior = 100
     number = random.randint(0, 100)
     print("Computer number: " + str(number))
     valor_usuario = int(random.randint(0, 100))
     print("IA number: " + str(valor_usuario))
     while valor_usuario != number:
         if valor_usuario > number:
-            print("Too far from the number, it's smaller. The number is between:" + str(0) + " and " + str(valor_usuario))
-            valor_usuario = random.randint(0, valor_usuario)
+            valor_superior = valor_usuario
+            print("Too far from the number, it's smaller. The number is between:" + str(valor_inferior) + " and " + str(valor_superior))
+            
+            valor_usuario = random.randint(valor_inferior, valor_superior)
             print("IA number: " + str(valor_usuario))
-        else:
-            print("Too far from the number, it's smaller. The number is between:" + str(valor_usuario) + " and " + str(100))
-            valor_usuario = random.randint(valor_usuario, 100)
+        elif valor_usuario < number:
+            valor_inferior = valor_usuario
+            print("Too far from the number, it's bigger. The number is between:" + str(valor_inferior) + " and " + str(valor_superior))
+            
+            valor_usuario = random.randint(valor_inferior, valor_superior)
             print("IA number: " + str(valor_usuario))
     if valor_usuario == number:
         print("¡Congratulations!, you have completed the level")             
-    
-   
       
 jugar()
 print(result)
-                
-
-    
-
