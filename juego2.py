@@ -1,6 +1,12 @@
+# iniciation of the matrix and the titles
+result = [] 
+a = [0]*2
+result.append(a)
+result[0][0]= "Player name"
+result[0][1]= "Games won"
+from tabulate import tabulate 
 
-from tabulate import tabulate  
-print(tabulate(result))
+
 # player options
 def game_level():
     easy_level = 0
@@ -39,23 +45,25 @@ def ask_number(value_min, value_max, attempts):
         index=-1 
         
         for m in range (len(result)):
-            print(m)
-            print (result[0][0])
             if result[m][0]== name:
                 index=m
                         
         if index == -1:
-            result[0].append(name)
-            #result[1].append(1)
+            a = [0]*2
+            result.append(a)
+            element=len(result)
+            result[element-1][0]=name
+            result[element-1][1]=1
+
                     
         else:
             result[index][0]=name
-            result[index][1]=result[index][1]+1 #
+            result[index][1]=result[index][1]+1 
               
-    
+    # attempts finished the game stops
     if rest_attempts == 0 and user_value != number:
         print("Game over")
-
+# conditions of the differents levels
 def play():
     user_choice = game_level()
     if user_choice ==4:
@@ -78,7 +86,7 @@ def play():
         
             if new_intent != str('Yes'):
                 continue_playing = False
-       
+   # level of the ia    
 def play_IA():
     import random
     low_value =0
@@ -104,4 +112,4 @@ def play_IA():
         print("¡Congratulations!, you have completed the level")             
       
 play()
-print(result)
+print(tabulate(result))
