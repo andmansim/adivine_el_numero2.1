@@ -1,12 +1,7 @@
-i = 0
-j = 2
-result = []
-for n in range(i):
-    a = [0]*j
-    result.append(a)
+result=[[],[]] # matrix in two dimensions
   
 result2=list()
-
+# player options
 def game_level():
     easy_level = 0
     normal_level = 1
@@ -46,14 +41,9 @@ def ask_number(value_min, value_max, attempts):
                 index=m
                         
         if index == -1:
-            a = [0]*2
-            
-            result.append(a)
-            
-            element=len(result)
-            result[element-1][0]=name
-            result[element-1][1]=1
-            
+            result[0].append(name)
+            result[1].append(1)
+                    
         else:
             result[index][0]=name
             result[index][1]=result[index][1]+1
