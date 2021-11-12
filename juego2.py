@@ -32,9 +32,11 @@ def ask_number(value_min, value_max, attempts):
             print("Choose another number between " + str(value_min) + " and " + str(value_max))
         else:
             if user_value > number:
-                print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(user_value))
+                value_max = user_value
+                print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(value_max))
             else:
-                print("Too far from the number, it's bigger. The number is between:" + str(user_value) + " and " + str(value_max))
+                value_min = user_value
+                print("Too far from the number, it's bigger. The number is between:" + str(value_min) + " and " + str(value_max))
         rest_attempts = rest_attempts - 1
         user_value = int(input())
     if user_value == number:
