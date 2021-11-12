@@ -8,34 +8,34 @@ for n in range(i):
 result2=list()
 
 def game_level():
-    nivel_sencillo = 0
-    nivel_medio = 1
-    nivel_avanzado = 2
-    nivel_experto = 3
-    nivel_IA = 4
-    levels = ["Game levels:" + "nivel_sencillo: " + str(nivel_sencillo), "nivel_medio: " + str(nivel_medio), "nivel_avanzado: " + str(nivel_avanzado), "nivel_experto: " + str(nivel_experto), "maestro IA: " + str(nivel_IA)]
+    easy_level = 0
+    normal_level = 1
+    advance_level = 2
+    expert_level = 3
+    level_IA = 4
+    levels = ["Game levels:" + "nivel_sencillo: " + str(easy_level), "nivel_medio: " + str(normal_level), "nivel_avanzado: " + str(advance_level), "nivel_experto: " + str(expert_level), "maestro IA: " + str(level_IA)]
     print(levels)
     user = int(input("Choose one level for the game: "))
     return user
 
-def pedir_numero(value_min, value_max, attempts):
+def ask_number(value_min, value_max, attempts):
     import random
     number = random.randint(value_min, value_max)
     print(number)
     print("Choose an integrer between:" + str(value_min) + " and " + str(value_max))
-    valor_usuario = int(input())
+    user_value = int(input())
     rest_attempts = attempts - 1
-    while valor_usuario != number and rest_attempts > 0:
-        if valor_usuario > value_max:
+    while user_value != number and rest_attempts > 0:
+        if user_value > value_max:
             print("Choose another number between " + str(value_min) + " and " + str(value_max))
         else:
-            if valor_usuario > number:
-                print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(valor_usuario))
+            if user_value > number:
+                print("Too far from the number, it's smaller. The number is between:" + str(value_min) + " and " + str(user_value))
             else:
-                print("Too far from the number, it's bigger. The number is between:" + str(valor_usuario) + " and " + str(value_max))
+                print("Too far from the number, it's bigger. The number is between:" + str(user_value) + " and " + str(value_max))
         rest_attempts = rest_attempts - 1
-        valor_usuario = int(input())
-    if valor_usuario == number:
+        user_value = int(input())
+    if user_value == number:
         print("¡Congratulations!, you have completed the level")
         print(("Put your name: "))
         name = str(input())
@@ -59,25 +59,25 @@ def pedir_numero(value_min, value_max, attempts):
             result[index][1]=result[index][1]+1
               
     
-    if rest_attempts == 0 and valor_usuario != number:
+    if rest_attempts == 0 and user_value != number:
         print("Game over")
 
-def jugar():
+def play():
     user_choice = game_level()
     if user_choice ==4:
-        jugar_IA()
+        play_IA()
     else:
         continue_playing = True 
         while continue_playing == True:
         
             if user_choice == 0:
-                pedir_numero(0,100,5)
+                ask_number(0,100,5)
             elif user_choice == 1:
-                pedir_numero(0,1000,20)
+                ask_number(0,1000,20)
             elif user_choice == 2:
-                pedir_numero(0,1000000,50)
+                ask_number(0,1000000,50)
             elif user_choice == 3:
-                pedir_numero(0,1000000000000,100)
+                ask_number(0,1000000000000,100)
        
             print("Do you want to continue playing? Yes/No")
             new_intent = str(input())
@@ -85,29 +85,29 @@ def jugar():
             if new_intent != str('Yes'):
                 continue_playing = False
        
-def jugar_IA():
+def play_IA():
     import random
-    valor_inferior =0
-    valor_superior = 100
+    low_value =0
+    high_value = 100
     number = random.randint(0, 100)
     print("Computer number: " + str(number))
-    valor_usuario = int(random.randint(0, 100))
-    print("IA number: " + str(valor_usuario))
-    while valor_usuario != number:
-        if valor_usuario > number:
-            valor_superior = valor_usuario
-            print("Too far from the number, it's smaller. The number is between:" + str(valor_inferior) + " and " + str(valor_superior))
+    user_value = int(random.randint(0, 100))
+    print("IA number: " + str(user_value))
+    while user_value != number:
+        if user_value > number:
+            high_value = user_value
+            print("Too far from the number, it's smaller. The number is between:" + str(low_value) + " and " + str(high_value))
             
-            valor_usuario = random.randint(valor_inferior, valor_superior)
-            print("IA number: " + str(valor_usuario))
-        elif valor_usuario < number:
-            valor_inferior = valor_usuario
-            print("Too far from the number, it's bigger. The number is between:" + str(valor_inferior) + " and " + str(valor_superior))
+            user_value = random.randint(low_value, high_value)
+            print("IA number: " + str(user_value))
+        elif user_value < number:
+            low_value = user_value
+            print("Too far from the number, it's bigger. The number is between:" + str(low_value) + " and " + str(high_value))
             
-            valor_usuario = random.randint(valor_inferior, valor_superior)
-            print("IA number: " + str(valor_usuario))
-    if valor_usuario == number:
+            user_value = random.randint(low_value, high_value)
+            print("IA number: " + str(user_value))
+    if user_value == number:
         print("¡Congratulations!, you have completed the level")             
       
-jugar()
+play()
 print(result)
