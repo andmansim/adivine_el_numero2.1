@@ -1,6 +1,6 @@
-result=[[],[]] # matrix in two dimensions
-  
-result2=list()
+
+from tabulate import tabulate  
+print(tabulate(result))
 # player options
 def game_level():
     easy_level = 0
@@ -13,6 +13,7 @@ def game_level():
     user = int(input("Choose one level for the game: "))
     return user
 
+# start to play depending on the level
 def ask_number(value_min, value_max, attempts):
     import random
     number = random.randint(value_min, value_max)
@@ -34,19 +35,22 @@ def ask_number(value_min, value_max, attempts):
         print("¡Congratulations!, you have completed the level")
         print(("Put your name: "))
         name = str(input())
-        
+        #  looking for the name user in the matrix
         index=-1 
+        
         for m in range (len(result)):
+            print(m)
+            print (result[0][0])
             if result[m][0]== name:
                 index=m
                         
         if index == -1:
             result[0].append(name)
-            result[1].append(1)
+            #result[1].append(1)
                     
         else:
             result[index][0]=name
-            result[index][1]=result[index][1]+1
+            result[index][1]=result[index][1]+1 #
               
     
     if rest_attempts == 0 and user_value != number:
