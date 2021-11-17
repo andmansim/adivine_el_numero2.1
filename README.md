@@ -6,7 +6,7 @@ https://github.com/andmansim/adivine_el_numero2.1.git
 Hemos mejorado el juego de adivinar un número.
 El diagrama de flujo que tenemos en nuestro código es el siguiente:
 
-![Diagrama de flujo de adivinar el número 2](/andmansim/adivine_el_numero2.1/Figma-adivina-el-numero-2.1.jpg)
+![Diagrama de flujo de adivinar el número 2](Figma-adivina-el-numero-2.1.jpg)
 ```
 # iniciation of the matrix and the titles
 result = [] 
